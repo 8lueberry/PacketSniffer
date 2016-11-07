@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+#
+# Usage:
+#   `python sniff.py update`: Get the latest country DB
+#   `python sniff.py`: Start running
+#
+# python version 2.7.11
+#
+
 from __future__ import print_function
 
 import GeoIP
@@ -19,7 +27,7 @@ filename = "GeoLiteCity.dat"
 threshold = 10 # how many packet before showing on screen
 maxitem = 10 # number of item to remember (large number)
 regex = r'IP (.*)\.(.*) > (.*)'
-networkAdapter = 'enp4s0' # 'en0'
+networkAdapter = 'enp4s0' # e.g. 'en0' -> call ifconfig to get the adapter name
 
 cache = collections.OrderedDict()
 
