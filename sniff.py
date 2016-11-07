@@ -19,6 +19,7 @@ filename = "GeoLiteCity.dat"
 threshold = 10 # how many packet before showing on screen
 maxitem = 10 # number of item to remember (large number)
 regex = r'IP (.*)\.(.*) > (.*)'
+networkAdapter = 'enp4s0' # 'en0'
 
 cache = collections.OrderedDict()
 
@@ -87,8 +88,8 @@ def printCountry(ip):
 ################################################################################
 # Start sniffing
 ################################################################################
-def sniff():
-    p = sub.Popen(('sudo', 'tcpdump', '-l', '-n', '-t', '-ien0', 'udp'), stdout=sub.PIPE)
+def sniff():    
+    p = sub.Popen(('sudo', 'tcpdump', '-l', '-n', '-t', '-i' + networkAdapter, 'udp'), stdout=sub.PIPE)
 
     try:
         for row in p.stdout:
